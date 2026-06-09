@@ -9,12 +9,11 @@ genai.configure(
 )
 
 model = genai.GenerativeModel(
-    "gemini-3.5-flash"
+    "gemini-2.5-flash"
 )
 
-def generate_post(prompt):
+def generate_post(prompt : str):
     
     response = model.generate_content(prompt)
-    print(response)
     return response.text
 
