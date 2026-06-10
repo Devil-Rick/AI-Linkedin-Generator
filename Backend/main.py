@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from models.post_request import PostRequest
-from services.gemini_service import generate_post
+from services.llm_service import LLMService
 from services.nlp_service import analyze_text
 from services.prompt_service import PromptService
 from services.score_service import ScoreService
@@ -39,7 +39,7 @@ def generate_post_gemini(data: PostRequest):
     prompt = PromptService.build_prompt(data.learning_text, data.style, data.audience, nlp_data)
     
     # generate result
-    post = generate_post(prompt)
+    post = LLMService.generate_gemini(prompt)
     
     # generate score
     print(ScoreService.score_post(post))

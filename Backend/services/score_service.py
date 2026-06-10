@@ -1,7 +1,7 @@
 import json 
 
 from models.score_response import ScoreResponse
-from services.gemini_service import generate_post
+from services.llm_service import LLMService
 
 class ScoreService:
     
@@ -56,7 +56,7 @@ class ScoreService:
     def score_post(post: str) -> ScoreResponse:
         prompt = ScoreService.build_score_prompt(post)
         
-        response = generate_post(prompt)
+        response = LLMService.generate_gemini(prompt)
         
         cleaned_response = (
             response.replace("```json", "")
