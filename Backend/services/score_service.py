@@ -24,31 +24,28 @@ class ScoreService:
             Return only valid JSON.
             
             JSON Format:{{
-                overall_score: 8.5,
-            hook: {{
-                'score': 8,
-                "reason": 'Reason for the score'
-            }},
-            
-            engagement: {{
-                'score': 8,
-                "reason": 'Reason for the score'
-            }},
-            
-            readability: {{
-                'score': 8,
-                "reason": 'Reason for the score'
-            }},
-            
-            professionalism: {{
-                'score': 8,
-                "reason": 'Reason for the score'
-            }},
-            
-            improvement:[
-                "list of all improvement",
-                "if any pointers to highlight"
-            ]                
+                overall_score: <float>,
+                hook: {{
+                    'score': <int>,
+                    "reason": <str>
+                }},
+                
+                engagement: {{
+                    'score': <int>,
+                    "reason": <str>
+                }},
+                
+                readability: {{
+                    'score': <int>,
+                    "reason": <str>
+                }},
+                
+                professionalism: {{
+                    'score': <int>,
+                    "reason": <str>
+                }},
+                
+                improvement:[ <str>,<str> ]
             }}
             
             POST : {post}
@@ -69,4 +66,3 @@ class ScoreService:
         data = json.loads(cleaned_response)
         
         return ScoreResponse(**data)
-    

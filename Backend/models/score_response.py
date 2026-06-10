@@ -2,15 +2,15 @@ from pydantic import BaseModel
 from typing import List
 
 class ScoreMetric(BaseModel):
-    score :str
+    score :int
     reason : str
     
 class ScoreResponse(BaseModel):
     overall_score : float
     hook : ScoreMetric
-    engagment : ScoreMetric
+    engagement : ScoreMetric
     readability : ScoreMetric
-    profesionalism : ScoreMetric
-    improvements : List[str]     
+    professionalism : ScoreMetric
+    improvement : List[str]     
 
     

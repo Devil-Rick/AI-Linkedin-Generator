@@ -10,11 +10,7 @@ def get_entity(text):
     doc = nlp(text)
     
     return [
-        {
-            'text': ent.text,
-            'label': ent.label_
-        }
-        for ent in doc.ents
+        ent.text for ent in doc.ents
     ]
     
 # retrieve useful nouns

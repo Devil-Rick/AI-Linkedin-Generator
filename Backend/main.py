@@ -4,6 +4,7 @@ from models.post_request import PostRequest
 from services.gemini_service import generate_post
 from services.nlp_service import analyze_text
 from services.prompt_service import PromptService
+from services.score_service import ScoreService
 
 
 app = FastAPI()
@@ -33,14 +34,15 @@ def home():
 def generate_post_gemini(data: PostRequest):
     # data processing NLP layer
     nlp_data = analyze_text(data.learning_text)
-    print(nlp_data)
     
     # generate prompt
     prompt = PromptService.build_prompt(data.learning_text, data.style, data.audience, nlp_data)
-    print(prompt)
     
     # generate result
     post = generate_post(prompt)
+    
+    # generate score
+    print(ScoreService.score_post(post))
     
     return {post}    
 
